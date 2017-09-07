@@ -1,15 +1,16 @@
-# RefreshLoadmore
+
 分页加载的工具类,使用以下的工具进行组装下拉刷新加载更多,并对分页的逻辑以及对应的状态的显示的工具类
-下拉刷新:[android-Ultra-Pull-To-Refresh](https://github.com/liaohuqiu/android-Ultra-Pull-To-Refresh)
-状态切换:[ProgressLayout](https://github.com/nguyenhoanglam/ProgressLayout)
-listview的加载更多:[android-cube-app](https://github.com/liaohuqiu/android-cube-app)
-recyclerview的加载更多:[RecyclerViewAdapter](https://github.com/Othershe/RecyclerViewAdapter)
+
+- 下拉刷新:[android-Ultra-Pull-To-Refresh](https://github.com/liaohuqiu/android-Ultra-Pull-To-Refresh)
+- 状态切换:[ProgressLayout](https://github.com/nguyenhoanglam/ProgressLayout)
+- listview的加载更多:[android-cube-app](https://github.com/liaohuqiu/android-cube-app)
+- recyclerview的加载更多:[RecyclerViewAdapter](https://github.com/Othershe/RecyclerViewAdapter)
 
 
 
 ## 使用方法:
 
-#### 1.使用ListView时,使用
+#### 1.使用ListView时,使用RefreshLoadMoreListHelper
 
 在布局中添加：
 ```xml
@@ -75,7 +76,7 @@ mHelper.handlerSuccess(myAdapter,results);
 ```
 
 
-#### 2.使用RecyclerView
+#### 2.使用RecyclerView时,使用RefreshLoadMoreRecyclerHelper
 1.在布局中添加
 
 ```xml
@@ -130,11 +131,6 @@ List<Result> results = value.getResults();
 mHelper.handlerSuccess(myAdapter,results);
 
 ```
-
-
-
-
-
 
 更多详细的使用参考demo
 
