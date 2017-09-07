@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.ViewGroup;
 
+import com.hncgc1990.library.loadMore.LoadMoreUIHandler;
 import com.hncgc1990.library.recyclerLoadMore.LoadMoreController;
 import com.hncgc1990.library.recyclerLoadMore.Util;
 import com.hncgc1990.library.recyclerLoadMore.ViewHolder;
@@ -42,6 +43,10 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<RecyclerView.V
         mDatas = datas == null ? new ArrayList<T>() : datas;
         mLoadMoreContainer=new LoadMoreController(context);
         mLoadMoreContainer.setOpenLoadMore(isOpenLoadMore);
+    }
+
+    public void setLoadMoreUIHandler(LoadMoreUIHandler handler){
+        mLoadMoreContainer.setLoadMoreUIHandler(handler);
     }
 
     @Override

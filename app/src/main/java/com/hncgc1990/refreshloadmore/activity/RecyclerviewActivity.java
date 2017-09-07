@@ -1,4 +1,4 @@
-package com.hncgc1990.refreshloadmore;
+package com.hncgc1990.refreshloadmore.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +11,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.hncgc1990.library.RefreshLoadMoreRecyclerHelper;
+import com.hncgc1990.refreshloadmore.R;
+import com.hncgc1990.refreshloadmore.RetrofitSingle;
 import com.hncgc1990.refreshloadmore.adapter.RecyclerAdapter;
 import com.hncgc1990.refreshloadmore.data.PostData;
 import com.hncgc1990.refreshloadmore.data.PostListInter;

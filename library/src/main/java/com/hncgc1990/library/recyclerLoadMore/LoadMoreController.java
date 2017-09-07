@@ -5,7 +5,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
+import android.view.ViewGroup;
 
+import com.hncgc1990.library.loadMore.LoadMoreDefaultFooterView;
+import com.hncgc1990.library.loadMore.LoadMoreUIHandler;
 import com.hncgc1990.library.recyclerLoadMore.base.BaseAdapter;
 import com.hncgc1990.library.recyclerLoadMore.interfaces.OnLoadMoreListener;
 
@@ -32,13 +35,13 @@ public class LoadMoreController {
 
     private OnLoadMoreListener mLoadMoreListener;
 
-    private DefaultLoadMoreView mLoadMoreView;
+    private LoadMoreUIHandler mLoadMoreView;
 
     private RecyclerView mRecyclerView;
 
     public LoadMoreController(Context context){
-        mLoadMoreView=new DefaultLoadMoreView(context);
-        mLoadMoreView.setOnClickListener(new View.OnClickListener() {
+        mLoadMoreView=new LoadMoreDefaultFooterView(context);
+        mLoadMoreView.getLoadMoreView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 scrollLoadMore();
@@ -47,7 +50,15 @@ public class LoadMoreController {
     }
 
 
-
+    public void setLoadMoreUIHandler(LoadMoreUIHandler mLoadMoreView) {
+        this.mLoadMoreView = mLoadMoreView;
+        mLoadMoreView.getLoadMoreView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                scrollLoadMore();
+            }
+        });
+    }
 
     /**
      * 添加滚动监听
@@ -172,8 +183,8 @@ public class LoadMoreController {
         isAutoLoadMore = autoLoadMore;
     }
 
-    public DefaultLoadMoreView getLoadMoreView() {
-        return mLoadMoreView;
+    public ViewGroup getLoadMoreView() {
+        return mLoadMoreView.getLoadMoreView();
     }
 
     public boolean isStart() {

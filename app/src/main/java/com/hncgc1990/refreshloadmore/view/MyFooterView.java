@@ -1,40 +1,46 @@
-package com.hncgc1990.library.loadMore;
+package com.hncgc1990.refreshloadmore.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.hncgc1990.library.R;
+import com.hncgc1990.library.loadMore.LoadMoreUIHandler;
+import com.hncgc1990.refreshloadmore.R;
 
-public class LoadMoreDefaultFooterView extends RelativeLayout implements LoadMoreUIHandler {
+public class MyFooterView extends RelativeLayout implements LoadMoreUIHandler {
 
     private TextView mTextView;
+    private ProgressBar mProgressBar;
 
-    public LoadMoreDefaultFooterView(Context context) {
+    public MyFooterView(Context context) {
         this(context, null);
     }
 
-    public LoadMoreDefaultFooterView(Context context, AttributeSet attrs) {
+    public MyFooterView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public LoadMoreDefaultFooterView(Context context, AttributeSet attrs, int defStyle) {
+    public MyFooterView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         setupViews();
     }
 
     private void setupViews() {
-        LayoutInflater.from(getContext()).inflate(R.layout.layout_default_footer, this);
+        LayoutInflater.from(getContext()).inflate(R.layout.layout_my_footer, this);
         mTextView = (TextView) findViewById(R.id.tv_text);
+        mProgressBar= (ProgressBar) findViewById(R.id.pb_loading);
     }
 
     @Override
     public void onLoading() {
         setVisibility(VISIBLE);
-        mTextView.setText(R.string.cube_views_load_more_loading);
+        mTextView.setText("加载中");
+        mProgressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -42,24 +48,27 @@ public class LoadMoreDefaultFooterView extends RelativeLayout implements LoadMor
         if (!hasMore) {
             setVisibility(VISIBLE);
             if (empty) {
-                mTextView.setText(R.string.cube_views_load_more_loaded_empty);
+                mTextView.setText("空");
             } else {
-                mTextView.setText(R.string.cube_views_load_more_loaded_no_more);
+                mTextView.setText("end");
             }
         } else {
             setVisibility(INVISIBLE);
         }
+        mProgressBar.setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void onWaitToLoadMore() {
         setVisibility(VISIBLE);
-        mTextView.setText(R.string.cube_views_load_more_click_to_load_more);
+        mTextView.setText("更多");
+        mProgressBar.setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void onLoadError( int errorCode, String errorMessage) {
-        mTextView.setText(R.string.cube_views_load_more_error);
+        mTextView.setText("失败");
+        mProgressBar.setVisibility(View.INVISIBLE);
     }
 
     @Override

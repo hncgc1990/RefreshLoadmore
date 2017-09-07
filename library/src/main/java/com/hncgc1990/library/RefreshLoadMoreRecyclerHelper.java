@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 
+import com.hncgc1990.library.loadMore.LoadMoreUIHandler;
 import com.hncgc1990.library.recyclerLoadMore.base.BaseAdapter;
 import com.hncgc1990.library.recyclerLoadMore.interfaces.OnLoadMoreListener;
 import com.nguyenhoanglam.progresslayout.ProgressLayout;
@@ -26,7 +27,7 @@ public class RefreshLoadMoreRecyclerHelper {
 
     ProgressLayout progressLayout;
 
-    BaseAdapter loadMoreContainer;
+    BaseAdapter loadmoreAdapter;
 
     LoadDataListener listener;
 
@@ -35,11 +36,11 @@ public class RefreshLoadMoreRecyclerHelper {
     Context context;
 
 
-    public RefreshLoadMoreRecyclerHelper(Context context, PtrClassicFrameLayout ptrFrameLayout, ProgressLayout progressLayout, BaseAdapter loadMoreContainer, LoadDataListener listener) {
+    public RefreshLoadMoreRecyclerHelper(Context context, PtrClassicFrameLayout ptrFrameLayout, ProgressLayout progressLayout, BaseAdapter loadmoreAdapter, LoadDataListener listener) {
         this.context=context;
         this.ptrFrameLayout = ptrFrameLayout;
         this.progressLayout=progressLayout;
-        this.loadMoreContainer = loadMoreContainer;
+        this.loadmoreAdapter = loadmoreAdapter;
         this.listener=listener;
         dataSoucre=new DefaultDataSource();
         setDataSoucre(dataSoucre);
@@ -61,8 +62,8 @@ public class RefreshLoadMoreRecyclerHelper {
                 @Override
                 public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
 
-                    if(loadMoreContainer!=null){
-                        return PtrDefaultHandler.checkContentCanBePulledDown(frame, content, header) && loadMoreContainer.isStart();
+                    if(loadmoreAdapter !=null){
+                        return PtrDefaultHandler.checkContentCanBePulledDown(frame, content, header) && loadmoreAdapter.isStart();
                     }else{
                         return PtrDefaultHandler.checkContentCanBePulledDown(frame, content, header);
                     }
@@ -72,9 +73,9 @@ public class RefreshLoadMoreRecyclerHelper {
         }
 
         // 使用默认样式
-        if(loadMoreContainer!=null){
+        if(loadmoreAdapter !=null){
 
-            loadMoreContainer.setOnLoadMoreListener(new OnLoadMoreListener() {
+            loadmoreAdapter.setOnLoadMoreListener(new OnLoadMoreListener() {
                 @Override
                 public void onLoadMore() {
                     loadData(false,false);
@@ -116,18 +117,18 @@ public class RefreshLoadMoreRecyclerHelper {
     }
 
     private void showLoadMoreEmpty(){
-        if(loadMoreContainer!=null)
-            loadMoreContainer.loadMoreFinish(true,dataSoucre.hasMore());
+        if(loadmoreAdapter !=null)
+            loadmoreAdapter.loadMoreFinish(true,dataSoucre.hasMore());
     }
 
     private void showLoadMoreError(String errMsg){
-        if(loadMoreContainer!=null)
-            loadMoreContainer.loadMoreError(0,errMsg);
+        if(loadmoreAdapter !=null)
+            loadmoreAdapter.loadMoreError(0,errMsg);
     }
 
     private void showLoadMoreFinish(){
-        if(loadMoreContainer!=null)
-            loadMoreContainer.loadMoreFinish(false,dataSoucre.hasMore());
+        if(loadmoreAdapter !=null)
+            loadmoreAdapter.loadMoreFinish(false,dataSoucre.hasMore());
     }
 
 
@@ -189,6 +190,11 @@ public class RefreshLoadMoreRecyclerHelper {
 
     public interface  LoadDataListener{
         void doLoadData(int page, int perPage);
+    }
+
+
+    public void setLoadMoreUIHandler(LoadMoreUIHandler handler){
+        loadmoreAdapter.setLoadMoreUIHandler(handler);
     }
 
 

@@ -1,12 +1,16 @@
 package com.hncgc1990.library.loadMore;
 
+import android.view.ViewGroup;
+
 public interface LoadMoreUIHandler {
 
-    public void onLoading(LoadMoreContainer container);
+    public void onLoading();
 
-    public void onLoadFinish(LoadMoreContainer container, boolean empty, boolean hasMore);
+    public void onLoadFinish( boolean empty, boolean hasMore);
 
-    public void onWaitToLoadMore(LoadMoreContainer container);
+    public void onWaitToLoadMore();
 
-    public void onLoadError(LoadMoreContainer container, int errorCode, String errorMessage);
+    public void onLoadError(int errorCode, String errorMessage);
+
+    public ViewGroup getLoadMoreView();
 }

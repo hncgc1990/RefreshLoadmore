@@ -1,4 +1,4 @@
-package com.hncgc1990.refreshloadmore;
+package com.hncgc1990.refreshloadmore.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.widget.ListView;
 
 import com.hncgc1990.library.RefreshLoadMoreListHelper;
 import com.hncgc1990.library.loadMore.LoadMoreListViewContainer;
+import com.hncgc1990.refreshloadmore.R;
+import com.hncgc1990.refreshloadmore.RetrofitSingle;
 import com.hncgc1990.refreshloadmore.adapter.ListAdapter;
 import com.hncgc1990.refreshloadmore.data.PostData;
 import com.hncgc1990.refreshloadmore.data.PostListInter;

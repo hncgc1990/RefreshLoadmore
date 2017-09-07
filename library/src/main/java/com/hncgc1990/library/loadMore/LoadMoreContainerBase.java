@@ -118,7 +118,7 @@ public abstract class LoadMoreContainerBase extends LinearLayout implements Load
         mIsLoading = true;
 
         if (mLoadMoreUIHandler != null) {
-            mLoadMoreUIHandler.onLoading(this);
+            mLoadMoreUIHandler.onLoading();
         }
         if (null != mLoadMoreHandler) {
             mLoadMoreHandler.onLoadMore(this);
@@ -134,7 +134,7 @@ public abstract class LoadMoreContainerBase extends LinearLayout implements Load
             tryToPerformLoadMore();
         } else {
             if (mHasMore) {
-                mLoadMoreUIHandler.onWaitToLoadMore(this);
+                mLoadMoreUIHandler.onWaitToLoadMore();
             }
         }
     }
@@ -202,7 +202,7 @@ public abstract class LoadMoreContainerBase extends LinearLayout implements Load
         mHasMore = hasMore;
 
         if (mLoadMoreUIHandler != null) {
-            mLoadMoreUIHandler.onLoadFinish(this, emptyResult, hasMore);
+            mLoadMoreUIHandler.onLoadFinish( emptyResult, hasMore);
         }
     }
 
@@ -211,7 +211,7 @@ public abstract class LoadMoreContainerBase extends LinearLayout implements Load
         mIsLoading = false;
         mLoadError = true;
         if (mLoadMoreUIHandler != null) {
-            mLoadMoreUIHandler.onLoadError(this, errorCode, errorMessage);
+            mLoadMoreUIHandler.onLoadError( errorCode, errorMessage);
         }
     }
 

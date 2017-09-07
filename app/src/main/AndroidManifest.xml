@@ -11,11 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ListViewActivity"></activity>
-        <activity android:name=".RecyclerviewActivity">
 
-        </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.MainActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,6 +20,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <activity android:name=".activity.ListViewActivity"></activity>
+        <activity android:name=".activity.RecyclerviewActivity">
+        </activity>
+        <activity android:name=".activity.CustomeLoadMoreActivity"></activity>
     </application>
 
 </manifest>
