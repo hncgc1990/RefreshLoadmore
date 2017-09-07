@@ -7,10 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ListView;
 
-import com.hncgc1990.library.DefaultDataSource;
 import com.hncgc1990.library.RefreshLoadMoreListHelper;
 import com.hncgc1990.library.loadMore.LoadMoreListViewContainer;
-import com.hncgc1990.refreshloadmore.adapter.MyAdapter;
+import com.hncgc1990.refreshloadmore.adapter.ListAdapter;
 import com.hncgc1990.refreshloadmore.data.PostData;
 import com.hncgc1990.refreshloadmore.data.PostListInter;
 import com.hncgc1990.refreshloadmore.data.Result;
@@ -38,7 +37,7 @@ public class ListViewActivity extends AppCompatActivity {
     ListView listview;
 
 
-    MyAdapter myAdapter;
+    ListAdapter myAdapter;
 
 
     RefreshLoadMoreListHelper mHelper;
@@ -58,9 +57,10 @@ public class ListViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listview);
         ButterKnife.bind(this);
-        myAdapter = new MyAdapter();
+        myAdapter = new ListAdapter();
         listview.setAdapter(myAdapter);
 
+        //初始化,设置刷新,加载更多的请求
         mHelper = new RefreshLoadMoreListHelper(this, ptrFrameLayout, progressLayout, loadMoreContainer, new RefreshLoadMoreListHelper.LoadDataListener() {
             @Override
             public void doLoadData(int page, int perPage) {
@@ -68,12 +68,9 @@ public class ListViewActivity extends AppCompatActivity {
             }
         });
 
-        mHelper.setDataSoucre(new DefaultDataSource());
+        //刷新请求
         mHelper.refresh();
 
-        int footerViewsCount = listview.getFooterViewsCount();
-
-        Log.d("chen",footerViewsCount+"foot");
     }
 
 
@@ -96,7 +93,6 @@ public class ListViewActivity extends AppCompatActivity {
                         Log.d("chen", "onNext");
 
                         List<Result> results = value.getResults();
-//                        List<Result> results=new ArrayList<Result>();
                         mHelper.handlerSuccess(myAdapter,results);
                     }
 

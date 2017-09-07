@@ -21,12 +21,12 @@ import butterknife.ButterKnife;
  * Created by Administrator on 2017-8-31.
  */
 
-public class MyAdapter extends BaseAdapter implements IAdapter{
+public class ListAdapter extends BaseAdapter implements IAdapter{
 
 
     List<Result> results=new ArrayList<>();
 
-    public MyAdapter() {
+    public ListAdapter() {
     }
 
 
