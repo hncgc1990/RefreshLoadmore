@@ -102,7 +102,11 @@ public abstract class LoadMoreContainerBase extends LinearLayout implements Load
      */
     public boolean isStart(){
 
-        return  mAbsListView.getFirstVisiblePosition() == 0 &&mAbsListView.getChildAt(0).getTop()==0;
+        if(mAbsListView.getChildAt(0)!=null){
+            return mAbsListView.getFirstVisiblePosition() == 0 &&mAbsListView.getChildAt(0).getTop()==0;
+        }
+
+        return mAbsListView.getFirstVisiblePosition() == 0;
     }
 
     private void tryToPerformLoadMore() {

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.nguyenhoanglam.progresslayout.ProgressFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/progressLayout"
+    android:orientation="vertical"
+    tools:context=".activity.FrameLayoutActivity">
+
+    <LinearLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimary">
+
+
+        <Button
+            android:id="@+id/btn_showLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="加载中"/>
+
+
+        <Button
+            android:id="@+id/btn_showEmpty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="空数据"/>
+
+
+        <Button
+            android:id="@+id/btn_showError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="异常"/>
+
+        <Button
+            android:id="@+id/btn_showContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="显示正常内容"/>
+
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:gravity="center"
+        android:text="YOUR CONTENT HERE"
+        android:textSize="24sp" />
+
+
+
+
+
+
+
+</com.nguyenhoanglam.progresslayout.ProgressFrameLayout>

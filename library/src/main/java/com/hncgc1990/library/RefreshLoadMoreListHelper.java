@@ -8,7 +8,7 @@ import com.hncgc1990.library.loadMore.LoadMoreContainer;
 import com.hncgc1990.library.loadMore.LoadMoreHandler;
 import com.hncgc1990.library.loadMore.LoadMoreListViewContainer;
 import com.hncgc1990.library.loadMore.LoadMoreUIHandler;
-import com.nguyenhoanglam.progresslayout.ProgressLayout;
+import com.nguyenhoanglam.progresslayout.ProgressFrameLayout;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class RefreshLoadMoreListHelper {
 
     PtrClassicFrameLayout ptrFrameLayout;
 
-    ProgressLayout progressLayout;
+    ProgressFrameLayout progressLayout;
 
     LoadMoreListViewContainer loadMoreContainer;
 
@@ -37,7 +37,7 @@ public class RefreshLoadMoreListHelper {
     Context context;
 
 
-    public RefreshLoadMoreListHelper(Context context, PtrClassicFrameLayout ptrFrameLayout, ProgressLayout progressLayout, LoadMoreListViewContainer loadMoreContainer, LoadDataListener listener) {
+    public RefreshLoadMoreListHelper(Context context, PtrClassicFrameLayout ptrFrameLayout, ProgressFrameLayout progressLayout, LoadMoreListViewContainer loadMoreContainer, LoadDataListener listener) {
         this.context=context;
         this.ptrFrameLayout = ptrFrameLayout;
         this.progressLayout=progressLayout;
@@ -98,12 +98,17 @@ public class RefreshLoadMoreListHelper {
 
     private void showRefreshEmpty(){
         if(progressLayout!=null)
-            progressLayout.showEmpty(ContextCompat.getDrawable(context,R.drawable.ptr_rotate_arrow),"暂无数据");
+            progressLayout.showEmpty(ContextCompat.getDrawable(context,R.drawable.ic_empty),"暂无数据");
     }
 
     private void showRefreshError(){
         if(progressLayout!=null)
-            progressLayout.showError(ContextCompat.getDrawable(context,R.drawable.ptr_rotate_arrow),"网络错误","重试",null);
+            progressLayout.showError(ContextCompat.getDrawable(context, R.drawable.ic_no_connection), "网络错误", "重试", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    loadData(true,true);
+                }
+            });
     }
 
     private void showRefreshFinish(){
@@ -161,10 +166,11 @@ public class RefreshLoadMoreListHelper {
     public void handlerError(){
 
         if(dataSoucre.isRefreah()){
+            ptrFrameLayout.refreshComplete();
             showRefreshError();
         }else{
             //TODO 页码的恢复
-            dataSoucre.pageDown();
+//            dataSoucre.pageDown();
             showLoadMoreError("网络错误");
         }
 

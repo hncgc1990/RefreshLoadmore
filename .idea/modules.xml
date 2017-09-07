@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/RefreshLoadMore.iml" filepath="$PROJECT_DIR$/RefreshLoadMore.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/progresslayout/progresslayout.iml" filepath="$PROJECT_DIR$/progresslayout/progresslayout.iml" />
     </modules>
   </component>
 </project>

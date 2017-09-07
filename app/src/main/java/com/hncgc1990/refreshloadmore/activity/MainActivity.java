@@ -20,6 +20,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btnThree;
     @BindView(R.id.btn_four)
     Button btnFour;
+    @BindView(R.id.btn_five)
+    Button btnFive;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnTwo.setOnClickListener(this);
         btnThree.setOnClickListener(this);
         btnFour.setOnClickListener(this);
+        btnFive.setOnClickListener(this);
     }
 
     @Override
@@ -45,6 +49,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 CustomeLoadMoreActivity.startCustomeLoadMoreActivity(this);
                 break;
             case R.id.btn_four:
+                CustomeProgressActivity.startCustomeProgressActivity(this);
+                break;
+            case R.id.btn_five:
+                FrameLayoutActivity.startFrameLayoutActivity(this);
+                break;
+            default:
                 break;
         }
     }

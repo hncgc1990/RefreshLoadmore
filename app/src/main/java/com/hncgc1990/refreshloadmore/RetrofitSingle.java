@@ -20,7 +20,7 @@ public class RetrofitSingle {
         synchronized (RetrofitSingle.class){
             if(retrofit==null){
                 HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-                logging.setLevel(HttpLoggingInterceptor.Level.BODY);//设置查看日志的等级
+                logging.setLevel(HttpLoggingInterceptor.Level.BASIC);//设置查看日志的等级
                 OkHttpClient client=new OkHttpClient.Builder().addInterceptor(logging ).build();
 
                 retrofit = new Retrofit.Builder()

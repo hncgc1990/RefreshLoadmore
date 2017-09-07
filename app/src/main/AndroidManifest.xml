@@ -26,6 +26,8 @@
         <activity android:name=".activity.RecyclerviewActivity">
         </activity>
         <activity android:name=".activity.CustomeLoadMoreActivity"></activity>
+        <activity android:name=".activity.FrameLayoutActivity"></activity>
+        <activity android:name=".activity.CustomeProgressActivity"></activity>
     </application>
 
 </manifest>

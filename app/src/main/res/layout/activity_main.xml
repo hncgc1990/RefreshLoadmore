@@ -34,4 +34,11 @@
         android:text="自定义状态切换"/>
 
 
+    <Button
+        android:id="@+id/btn_five"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="状态切换的使用"/>
+
+
 </LinearLayout>

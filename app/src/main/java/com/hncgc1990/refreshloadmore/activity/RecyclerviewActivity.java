@@ -19,15 +19,19 @@ import com.hncgc1990.refreshloadmore.data.PostListInter;
 import com.hncgc1990.refreshloadmore.data.Result;
 import com.hncgc1990.refreshloadmore.helper.ProtocolHelper;
 import com.hncgc1990.refreshloadmore.helper.SchedulerHelper;
-import com.nguyenhoanglam.progresslayout.ProgressLayout;
+import com.nguyenhoanglam.progresslayout.ProgressFrameLayout;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import in.srain.cube.views.ptr.PtrClassicFrameLayout;
 import io.reactivex.Observer;
+import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Function;
 import retrofit2.Retrofit;
 
 public class RecyclerviewActivity extends AppCompatActivity {
@@ -35,7 +39,7 @@ public class RecyclerviewActivity extends AppCompatActivity {
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     @BindView(R.id.progressLayout)
-    ProgressLayout progressLayout;
+    ProgressFrameLayout progressLayout;
     @BindView(R.id.ptrFrameLayout)
     PtrClassicFrameLayout ptrFrameLayout;
 
@@ -75,13 +79,32 @@ public class RecyclerviewActivity extends AppCompatActivity {
 
     }
 
+    int count=0;
+
     private void getListData(int page) {
 
         Retrofit instance = RetrofitSingle.getInstance();
         PostListInter postListInter = instance.create(PostListInter.class);
         postListInter
                 .getPostList(page)
-//                .delay(5, TimeUnit.SECONDS)
+                .map(new Function<PostData<List<Result>>, PostData<List<Result>>>() {
+                    @Override
+                    public PostData<List<Result>> apply(@NonNull PostData<List<Result>> listPostData) throws Exception {
+
+                        if(count%3==0){
+                            count++;
+                            List<Result> list=new ArrayList<Result>();
+                            PostData<List<Result>> postData=new PostData<List<Result>>();
+                            postData.setResults(list);
+                            postData.setError(false);
+                            return  postData;
+                        }else{
+                            count++;
+                            return listPostData;
+                        }
+                    }
+                })
+                .delay(2, TimeUnit.SECONDS)
                 .compose(SchedulerHelper.<PostData<List<Result>>>applySchedulers())
                 .compose(ProtocolHelper.applyProtocolHandler())
                 .subscribe(new Observer<PostData<List<Result>>>() {

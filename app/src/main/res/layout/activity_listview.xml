@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.nguyenhoanglam.progresslayout.ProgressLayout
+        <com.nguyenhoanglam.progresslayout.ProgressFrameLayout
             android:id="@+id/progressLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -34,7 +34,7 @@
 
 
             </com.hncgc1990.library.loadMore.LoadMoreListViewContainer>
-        </com.nguyenhoanglam.progresslayout.ProgressLayout>
+        </com.nguyenhoanglam.progresslayout.ProgressFrameLayout>
 
     </in.srain.cube.views.ptr.PtrClassicFrameLayout>
 

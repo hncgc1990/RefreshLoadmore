@@ -176,6 +176,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<RecyclerView.V
      */
     public void setLoadMoreData(List<T> datas) {
         int size = mDatas.size();
+        if(size==0) return;
         mDatas.addAll(datas);
         notifyItemInserted(size);
     }
@@ -229,6 +230,10 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<RecyclerView.V
      * @return
      */
     public boolean isStart() {
+
+        if(getItemCount()<=1){
+            return true;
+        }
         return mLoadMoreContainer.isStart();
     }
 }

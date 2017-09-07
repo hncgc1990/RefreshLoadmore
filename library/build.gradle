@@ -31,6 +31,7 @@ dependencies {
     //下拉刷新
     compile 'in.srain.cube:ultra-ptr:1.0.11'
     //状态切换
-    compile 'com.github.nguyenhoanglam:ProgressLayout:1.0.1'
+    //    compile 'com.github.nguyenhoanglam:ProgressLayout:1.0.1'
     compile 'com.android.support:recyclerview-v7:25.3.1'
+    compile project(':progresslayout')
 }

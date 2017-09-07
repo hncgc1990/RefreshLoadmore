@@ -135,7 +135,7 @@ mHelper.handlerSuccess(myAdapter,results);
 更多详细的使用参考demo
 
 #### 3.自定义加载更多布局
-实现LoadMoreUIHandler接口,调用对应的Helper设置即可,参考[MyFooterView]()
+实现LoadMoreUIHandler接口,调用对应的Helper设置即可,参考[MyFooterView](https://github.com/hncgc1990/RefreshLoadmore/blob/master/app/src/main/java/com/hncgc1990/refreshloadmore/view/MyFooterView.java)
 ```java
  mHelper.setLoadMoreUIHandler(new MyFooterView(this));
 ```
@@ -145,19 +145,24 @@ mHelper.handlerSuccess(myAdapter,results);
 
 
 #### 5.自定义状态切换
+- 自定义加载状态view实现 ILoadingView 接口
+- 自定义空数据状态view实现 IEmptyView 接口
+- 自定义错误状态viw实现 IErrorView 接口
 
+然后调用progresslayout的方法进行设置,如:
 
-
-
-
+```java
+//自定义空布局
+progressLayout.setEmptyView(new MyEmptyView(getLayoutInflater()));
+```
 
 
 ## 感谢
 - [干货集中营](http://gank.io/history)提供的api
-- 下拉刷新:[android-Ultra-Pull-To-Refresh](https://github.com/liaohuqiu/android-Ultra-Pull-To-Refresh)
-- 状态切换:[ProgressLayout](https://github.com/nguyenhoanglam/ProgressLayout)
-- listview的加载更多:[android-cube-app](https://github.com/liaohuqiu/android-cube-app)
-- recyclerview的加载更多:[RecyclerViewAdapter](https://github.com/Othershe/RecyclerViewAdapter)
+- [android-Ultra-Pull-To-Refresh](https://github.com/liaohuqiu/android-Ultra-Pull-To-Refresh)
+- [ProgressLayout](https://github.com/nguyenhoanglam/ProgressLayout)
+- [android-cube-app](https://github.com/liaohuqiu/android-cube-app)
+- [RecyclerViewAdapter](https://github.com/Othershe/RecyclerViewAdapter)
 
 
 

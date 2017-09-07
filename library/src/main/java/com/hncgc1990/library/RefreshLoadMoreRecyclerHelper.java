@@ -7,7 +7,7 @@ import android.view.View;
 import com.hncgc1990.library.loadMore.LoadMoreUIHandler;
 import com.hncgc1990.library.recyclerLoadMore.base.BaseAdapter;
 import com.hncgc1990.library.recyclerLoadMore.interfaces.OnLoadMoreListener;
-import com.nguyenhoanglam.progresslayout.ProgressLayout;
+import com.nguyenhoanglam.progresslayout.ProgressFrameLayout;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class RefreshLoadMoreRecyclerHelper {
 
     PtrClassicFrameLayout ptrFrameLayout;
 
-    ProgressLayout progressLayout;
+    ProgressFrameLayout progressLayout;
 
     BaseAdapter loadmoreAdapter;
 
@@ -36,7 +36,7 @@ public class RefreshLoadMoreRecyclerHelper {
     Context context;
 
 
-    public RefreshLoadMoreRecyclerHelper(Context context, PtrClassicFrameLayout ptrFrameLayout, ProgressLayout progressLayout, BaseAdapter loadmoreAdapter, LoadDataListener listener) {
+    public RefreshLoadMoreRecyclerHelper(Context context, PtrClassicFrameLayout ptrFrameLayout, ProgressFrameLayout progressLayout, BaseAdapter loadmoreAdapter, LoadDataListener listener) {
         this.context=context;
         this.ptrFrameLayout = ptrFrameLayout;
         this.progressLayout=progressLayout;
@@ -98,12 +98,17 @@ public class RefreshLoadMoreRecyclerHelper {
 
     private void showRefreshEmpty(){
         if(progressLayout!=null)
-            progressLayout.showEmpty(ContextCompat.getDrawable(context,R.drawable.ptr_rotate_arrow),"暂无数据");
+            progressLayout.showEmpty(ContextCompat.getDrawable(context,R.drawable.ic_empty),"暂无数据");
     }
 
     private void showRefreshError(){
         if(progressLayout!=null)
-            progressLayout.showError(ContextCompat.getDrawable(context,R.drawable.ptr_rotate_arrow),"网络错误","重试",null);
+            progressLayout.showError(ContextCompat.getDrawable(context,R.drawable.ic_no_connection),"网络错误","重试", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    loadData(true,true);
+                }
+            });
     }
 
     private void showRefreshFinish(){
@@ -134,14 +139,12 @@ public class RefreshLoadMoreRecyclerHelper {
 
 
     public void handlerSuccess(IAdapter adapter, List data){
-
-        adapter.updateData(dataSoucre.isRefreah(),data);
-
         if(dataSoucre.isRefreah()){
             ptrFrameLayout.refreshComplete();
             if(data.size()==0){
                 showRefreshEmpty();
             }else{
+                adapter.updateData(dataSoucre.isRefreah(),data);
                 showRefreshFinish();
                 showLoadMoreFinish();
             }
@@ -150,6 +153,7 @@ public class RefreshLoadMoreRecyclerHelper {
             if(data.size()==0){
                 showLoadMoreEmpty();
             }else{
+                adapter.updateData(dataSoucre.isRefreah(),data);
                 showLoadMoreFinish();
             }
         }
@@ -161,9 +165,9 @@ public class RefreshLoadMoreRecyclerHelper {
     public void handlerError(){
 
         if(dataSoucre.isRefreah()){
+            ptrFrameLayout.refreshComplete();
             showRefreshError();
         }else{
-            dataSoucre.pageDown();
             showLoadMoreError("网络错误");
         }
 
