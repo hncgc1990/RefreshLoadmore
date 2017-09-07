@@ -55,20 +55,20 @@ public class MyFooterView extends RelativeLayout implements LoadMoreUIHandler {
         } else {
             setVisibility(INVISIBLE);
         }
-        mProgressBar.setVisibility(View.INVISIBLE);
+        mProgressBar.setVisibility(View.GONE);
     }
 
     @Override
     public void onWaitToLoadMore() {
         setVisibility(VISIBLE);
         mTextView.setText("更多");
-        mProgressBar.setVisibility(View.INVISIBLE);
+        mProgressBar.setVisibility(View.GONE);
     }
 
     @Override
     public void onLoadError( int errorCode, String errorMessage) {
         mTextView.setText("失败");
-        mProgressBar.setVisibility(View.INVISIBLE);
+        mProgressBar.setVisibility(View.GONE);
     }
 
     @Override

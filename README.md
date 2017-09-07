@@ -134,11 +134,30 @@ mHelper.handlerSuccess(myAdapter,results);
 
 更多详细的使用参考demo
 
+#### 3.自定义加载更多布局
+实现LoadMoreUIHandler接口,调用对应的Helper设置即可,参考[MyFooterView]()
+```java
+ mHelper.setLoadMoreUIHandler(new MyFooterView(this));
+```
+
+#### 4.自定义下拉刷新布局
+参考[android-Ultra-Pull-To-Refresh](https://github.com/liaohuqiu/android-Ultra-Pull-To-Refresh)
+
+
+#### 5.自定义状态切换
 
 
 
 
 
+
+
+## 感谢
+- [干货集中营](http://gank.io/history)提供的api
+- 下拉刷新:[android-Ultra-Pull-To-Refresh](https://github.com/liaohuqiu/android-Ultra-Pull-To-Refresh)
+- 状态切换:[ProgressLayout](https://github.com/nguyenhoanglam/ProgressLayout)
+- listview的加载更多:[android-cube-app](https://github.com/liaohuqiu/android-cube-app)
+- recyclerview的加载更多:[RecyclerViewAdapter](https://github.com/Othershe/RecyclerViewAdapter)
 
 
 

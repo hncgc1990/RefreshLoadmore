@@ -7,6 +7,7 @@ import android.view.View;
 import com.hncgc1990.library.loadMore.LoadMoreContainer;
 import com.hncgc1990.library.loadMore.LoadMoreHandler;
 import com.hncgc1990.library.loadMore.LoadMoreListViewContainer;
+import com.hncgc1990.library.loadMore.LoadMoreUIHandler;
 import com.nguyenhoanglam.progresslayout.ProgressLayout;
 
 import java.util.List;
@@ -192,5 +193,7 @@ public class RefreshLoadMoreListHelper {
         void doLoadData(int page, int perPage);
     }
 
-
+    public void setLoadMoreUIHandler(LoadMoreUIHandler handler){
+        loadMoreContainer.setLoadMoreUIHandler(handler);
+    }
 }
