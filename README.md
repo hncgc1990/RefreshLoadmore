@@ -75,6 +75,13 @@ mHelper.handlerSuccess(myAdapter,results);
 
 ```
 
+6.在返回结果中设置总页数
+
+```java
+public void setPageCount(int count)
+```
+
+
 
 #### 2.使用RecyclerView时,使用RefreshLoadMoreRecyclerHelper
 1.在布局中添加
@@ -132,19 +139,35 @@ mHelper.handlerSuccess(myAdapter,results);
 
 ```
 
-更多详细的使用参考demo
+6.在返回结果中设置总页数
 
-#### 3.自定义加载更多布局
+```java
+public void setPageCount(int count)
+```
+
+
+#### 3.自定义分页逻辑
+实现IDataSoucre接口实现分页的逻辑,默认的实现[DefaultDataSource](https://github.com/hncgc1990/RefreshLoadmore/blob/master/library/src/main/java/com/hncgc1990/library/DefaultDataSource.java)
+
+然后调用setDataSoucre方法设置:
+
+
+```java
+mHelper.setDataSource(new DefaultDataSource());
+```
+
+
+#### 4.自定义加载更多布局
 实现LoadMoreUIHandler接口,调用对应的Helper设置即可,参考[MyFooterView](https://github.com/hncgc1990/RefreshLoadmore/blob/master/app/src/main/java/com/hncgc1990/refreshloadmore/view/MyFooterView.java)
 ```java
  mHelper.setLoadMoreUIHandler(new MyFooterView(this));
 ```
 
-#### 4.自定义下拉刷新布局
+#### 5.自定义下拉刷新布局
 参考[android-Ultra-Pull-To-Refresh](https://github.com/liaohuqiu/android-Ultra-Pull-To-Refresh)
 
 
-#### 5.自定义状态切换
+#### 6.自定义状态切换
 - 自定义加载状态view实现 ILoadingView 接口
 - 自定义空数据状态view实现 IEmptyView 接口
 - 自定义错误状态viw实现 IErrorView 接口
@@ -156,6 +179,9 @@ mHelper.handlerSuccess(myAdapter,results);
 progressLayout.setEmptyView(new MyEmptyView(getLayoutInflater()));
 ```
 
+
+
+更多详细的使用参考demo
 
 ## 感谢
 - [干货集中营](http://gank.io/history)提供的api
