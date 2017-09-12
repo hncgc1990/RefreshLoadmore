@@ -41,4 +41,11 @@
         android:text="状态切换的使用"/>
 
 
+    <Button
+        android:id="@+id/btn_six"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="状态切换的使用-使用constraintLayout"/>
+
+
 </LinearLayout>

@@ -169,8 +169,6 @@ public class RefreshLoadMoreListHelper {
             ptrFrameLayout.refreshComplete();
             showRefreshError();
         }else{
-            //TODO 页码的恢复
-//            dataSoucre.pageDown();
             showLoadMoreError("网络错误");
         }
 

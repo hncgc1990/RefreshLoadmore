@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btnFour;
     @BindView(R.id.btn_five)
     Button btnFive;
+    @BindView(R.id.btn_six)
+    Button btnSix;
 
 
     @Override
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnThree.setOnClickListener(this);
         btnFour.setOnClickListener(this);
         btnFive.setOnClickListener(this);
+        btnSix.setOnClickListener(this);
     }
 
     @Override
@@ -53,6 +56,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_five:
                 FrameLayoutActivity.startFrameLayoutActivity(this);
+                break;
+            case R.id.btn_six:
+                ConstraintLayoutActivity.startConstraintLayoutActivity(this);
                 break;
             default:
                 break;
